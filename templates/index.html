@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convertidor KMZ a DXF</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        function showLoading() {
+            document.getElementById('form-section').classList.add('hidden');
+            document.getElementById('loading-section').classList.remove('hidden');
+        }
+    </script>
+</head>
+<body class="bg-gray-100 h-screen flex items-center justify-center">
+
+    <div class="bg-white p-8 rounded-xl shadow-2xl w-full max-w-md">
+        <div class="text-center mb-8">
+            <h1 class="text-3xl font-bold text-blue-600">KMZ to DXF</h1>
+            <p class="text-gray-500 mt-2">WGS84 a PSAD56 UTM</p>
+        </div>
+
+        <div id="form-section">
+            <form action="/convert" method="post" enctype="multipart/form-data" onsubmit="showLoading()">
+                <div class="mb-6">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="kmz_file">
+                        Sube tu archivo .KMZ
+                    </label>
+                    <div class="relative border-2 border-dashed border-gray-300 rounded-lg p-6 hover:border-blue-500 transition-colors text-center cursor-pointer">
+                        <input type="file" name="kmz_file" id="kmz_file" accept=".kmz" required 
+                               class="absolute inset-0 w-full h-full opacity-0 cursor-pointer">
+                        <div class="text-gray-500">
+                            <span class="block">Arrastra el archivo aquí</span>
+                            <span class="block text-sm">o haz clic para buscar</span>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" 
+                        class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg shadow transition duration-200 transform hover:scale-105">
+                    🚀 Procesar y Descargar
+                </button>
+            </form>
+            <p class="text-xs text-gray-400 mt-4 text-center">
+                El archivo original y el resultado se respaldarán en GitHub automáticamente.
+            </p>
+        </div>
+
+        <div id="loading-section" class="hidden text-center py-10">
+            <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-blue-600 mx-auto mb-4"></div>
+            <h2 class="text-xl font-semibold text-gray-700">Procesando...</h2>
+            <p class="text-gray-500">Subiendo a la nube y convirtiendo coordenadas.</p>
+            <p class="text-sm text-yellow-600 mt-2">Por favor no cierres esta ventana.</p>
+        </div>
+    </div>
+
+</body>
+</html>
