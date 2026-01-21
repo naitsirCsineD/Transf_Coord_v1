@@ -1,0 +1,6 @@
+Flask==3.0.0
+ezdxf==1.1.0
+pandas==2.1.0
+pyproj==3.6.0
+PyGithub==2.1.1
+gunicorn==21.2.0
