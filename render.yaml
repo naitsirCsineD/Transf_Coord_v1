@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: kmz-converter
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.10.0
+      - key: GITHUB_TOKEN
+        sync: false  # Te pedirá que lo ingreses manualmente en el dashboard por seguridad
+      - key: GITHUB_REPO
+        sync: false  # Te pedirá el nombre del repo (ej: usuario/repo)
